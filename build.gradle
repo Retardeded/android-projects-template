@@ -1,6 +1,7 @@
 apply from: 'build-src/dependencies.gradle'
 
 buildscript {
+    ext.kotlin_version = "1.4.20"
     repositories {
         google()
         mavenCentral()

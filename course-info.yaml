@@ -1,8 +1,10 @@
 type: hyperskill
-title: hyperskill-android-project-template
+title: Photo Editor
 language: English
-summary: Hyperskill lesson 436808
+summary: You will learn how to work with photos in Android, how to use coroutines
+  and edit your image pixel by pixel. You will also be more familiar with handling
+  Android native intents.
 programming_language: Kotlin
 environment: Android
 content:
-- hyperskill-android-project-template
+- photo-editor

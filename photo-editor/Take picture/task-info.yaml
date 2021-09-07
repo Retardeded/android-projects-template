@@ -4,8 +4,6 @@ files:
   visible: false
 - name: src/main/AndroidManifest.xml
   visible: true
-- name: src/main/res/layout/activity_main.xml
-  visible: true
 - name: src/main/res/values/colors.xml
   visible: true
 - name: src/main/res/values/styles.xml
@@ -20,7 +18,9 @@ files:
   visible: true
 - name: src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml
   visible: true
-- name: src/test/java/org/hyperskill/android/template/project/Stage1UnitTest.kt
-  visible: false
-- name: src/main/java/org/hyperskill/android/project/template/MainActivity.kt
+- name: src/main/res/layout/activity_main.xml
   visible: true
+- name: src/main/java/org/hyperskill/photoeditor/MainActivity.kt
+  visible: true
+- name: src/test/java/org/hyperskill/photoeditor/Stage1UnitTest.kt
+  visible: false

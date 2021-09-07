@@ -1,4 +1,4 @@
-package org.hyperskill.android.project.template
+package org.hyperskill.photoeditor
 
 import org.junit.Test
 import org.junit.runner.RunWith

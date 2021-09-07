@@ -1,7 +1,7 @@
-package org.hyperskill.android.project.template
+package org.hyperskill.photoeditor
 
-import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
