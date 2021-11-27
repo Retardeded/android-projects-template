@@ -7,4 +7,4 @@ summary: You will learn how to work with photos in Android, how to use coroutine
 programming_language: Kotlin
 environment: Android
 content:
-- photo-editor
+- Photo Editor
