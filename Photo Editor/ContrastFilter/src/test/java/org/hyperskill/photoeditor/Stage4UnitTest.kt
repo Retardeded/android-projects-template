@@ -55,33 +55,6 @@ class Stage4UnitTest {
     }
 
     @Test
-    fun testShouldCheckDefaultBitmapEdit() {
-        val slBrightness = activity.findViewById<Slider>(R.id.slBrightness)
-        val slContrast = activity.findViewById<Slider>(R.id.slContrast)
-        val ivPhoto = activity.findViewById<ImageView>(R.id.ivPhoto)
-        var img0 = (ivPhoto.getDrawable() as BitmapDrawable).bitmap
-        var RGB0 = img0?.let { singleColor(it,80, 90) }
-
-        runBlocking() {
-            slBrightness.value += slBrightness.stepSize
-            slContrast.value += slContrast.stepSize * 9
-            slContrast.value += slContrast.stepSize
-
-            Shadows.shadowOf(Looper.getMainLooper()).idle()
-            Thread.sleep(200)
-            Shadows.shadowOf(Looper.getMainLooper()).idle()
-        }
-        val img2 = (ivPhoto.getDrawable() as BitmapDrawable).bitmap
-        val RGB2 = singleColor(img2, 80, 90)
-        val message2 = "val0 ${RGB0} val2 ${RGB2}"
-        if (RGB0 != null) {
-            assertTrue(message2,Math.abs(141-RGB2.first) <= marginError)
-            assertTrue(message2,Math.abs(201-RGB2.second) <= marginError)
-            assertTrue(message2,Math.abs(255-RGB2.third) <= marginError)
-        }
-    }
-
-    @Test
     fun testShouldCheckDefaultBitmapEdit2() {
         val slBrightness = activity.findViewById<Slider>(R.id.slBrightness)
         val slContrast = activity.findViewById<Slider>(R.id.slContrast)
@@ -102,9 +75,36 @@ class Stage4UnitTest {
         val RGB2 = singleColor(img2, 80, 90)
         val message2 = "val0 ${RGB0} val2 ${RGB2}"
         if (RGB0 != null) {
-            assertTrue(message2,Math.abs(149-RGB2.first) <= marginError)
-            assertTrue(message2,Math.abs(149-RGB2.second) <= marginError)
-            assertTrue(message2,Math.abs(149-RGB2.third) <= marginError)
+            assertTrue(message2,Math.abs(129-RGB2.first) <= marginError)
+            assertTrue(message2,Math.abs(129-RGB2.second) <= marginError)
+            assertTrue(message2,Math.abs(129-RGB2.third) <= marginError)
+        }
+    }
+
+    @Test
+    fun testShouldCheckDefaultBitmapEdit() {
+        val slBrightness = activity.findViewById<Slider>(R.id.slBrightness)
+        val slContrast = activity.findViewById<Slider>(R.id.slContrast)
+        val ivPhoto = activity.findViewById<ImageView>(R.id.ivPhoto)
+        var img0 = (ivPhoto.getDrawable() as BitmapDrawable).bitmap
+        var RGB0 = img0?.let { singleColor(it,80, 90) }
+
+        runBlocking() {
+            slBrightness.value += slBrightness.stepSize
+            slContrast.value += slContrast.stepSize * 9
+            slContrast.value += slContrast.stepSize
+
+            Shadows.shadowOf(Looper.getMainLooper()).idle()
+            Thread.sleep(200)
+            Shadows.shadowOf(Looper.getMainLooper()).idle()
+        }
+        val img2 = (ivPhoto.getDrawable() as BitmapDrawable).bitmap
+        val RGB2 = singleColor(img2, 80, 90)
+        val message2 = "val0 ${RGB0} val2 ${RGB2}"
+        if (RGB0 != null) {
+            assertTrue(message2,Math.abs(151-RGB2.first) <= marginError)
+            assertTrue(message2,Math.abs(211-RGB2.second) <= marginError)
+            assertTrue(message2,Math.abs(255-RGB2.third) <= marginError)
         }
     }
 

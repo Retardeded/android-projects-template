@@ -1,31 +1,31 @@
 <h2>Description</h2>
 
-<p>In this stage, we will add the <strong>galleryButton</strong> as well as <strong>imageView</strong> to display image chosen from the gallery.&nbsp;<br />
-The user should be able to load any image from his gallery to imageView.<br />
-In your virtual device you probably don&#39;t have any images saved in your gallery folder, so to test your application properly&nbsp;use default camera app and make some.</p>
+<p>In this stage, we will make use of one of Kotlin's most prominent features  - <strong>coroutines</strong>.<br>
+Applying filters should no longer freeze UI, it should be done in the background.</p>
 
 <h2>Objectives</h2>
 
-<p>Add the following components to the application layout:</p>
+<p>Make sure you have the following dependencies added to the build.gradle file</p>
 
 <ol>
-	<li><code>Button</code>&nbsp;for opening your gallery folder with&nbsp;the&nbsp;<code>id</code>&nbsp;attribute <code>btnGallery</code></li>
-	<li><code>ImageView</code>&nbsp;which will display gallery image&nbsp;with&nbsp;the&nbsp;<code>id</code>&nbsp;attribute <code>ivPhoto</code></li>
+	<li><code>implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")</code></li>
 </ol>
 
-<p>Then you need to add <code>OnClick</code> method to your the <code>galleryButton</code>. It should launch new Intent like:<br />
-<code>Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)</code></p>
+<p>Then you need to invoke your filter applier function asynchronously through for example <strong>CoroutineScope.</strong><br>
+Also there won't be any tests with big images, but if you want your app not to go out of memory very quickly with let's say 3264x2248 pictures then you must also implement proper scale down function to like 1224 width, 1632 height while maintaining picture aspect ratio.</p>
 
-<p>Then you need to code&nbsp;what happens when this activity returns some result&nbsp;<br />
-<code>resultLauncher = registerForActivityResult(StartActivityForResult()) { result -&gt;<br />
-if (result.resultCode == Activity.RESULT_OK)<br />
-{ ... }<br />
-}</code><br />
-That is mainly setting URI of&nbsp;<code>ivPhoto</code>&nbsp;to&nbsp;the returned URI .<br />
-Generally you must google how to do this stuff.</p>
+<p>The tests depend on the start bitmap so it's not necessary to do this.</p>
+
+<p>The difference coroutines make in this app will start to be  noticeable on medium size pictures</p>
 
 <h2>Examples</h2>
 
-<p><img alt="" height="530" name="photo1_1.png" src="https://ucarecdn.com/065d1db1-06da-4807-86ec-140de319f2d6/" width="280" /></p>
+<p>App should not be lagging at all, regardless of image size, while swiping sliders.</p>
 
-<p><img alt="" height="530" name="photo1_2.png" src="https://ucarecdn.com/fe6cf6f0-e595-479a-84bf-5cd2e7093dfe/" width="280" /></p>
+<p>Before: (slider value text lags while swiping slider)</p>
+
+<p><img alt="" height="520" name="image.png" src="https://ucarecdn.com/5caf999c-dc3d-4e50-96cc-3afb414f0b2c/" width="270"></p>
+
+<p>After: (slider value doesn't lag while swiping slider)</p>
+
+<p><img alt="" height="520" name="image.png" src="https://ucarecdn.com/dd689b01-0aa1-4379-983f-9d54f4dfe5de/" width="270"></p>

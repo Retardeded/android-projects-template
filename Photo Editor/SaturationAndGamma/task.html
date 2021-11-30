@@ -1,31 +1,50 @@
 <h2>Description</h2>
 
-<p>In this stage, we will add the <strong>galleryButton</strong> as well as <strong>imageView</strong> to display image chosen from the gallery.&nbsp;<br />
-The user should be able to load any image from his gallery to imageView.<br />
-In your virtual device you probably don&#39;t have any images saved in your gallery folder, so to test your application properly&nbsp;use default camera app and make some.</p>
+<p>In this stage, we will add two more filters - <strong>saturation </strong>and<strong> gamma</strong>.<br>
+So now four filters should affect image look.<br>
+To increase <strong>saturation </strong>we must increase color intensity without affecting it's brightness.<br>
+Increase in <strong>gamma</strong> value will mean that the image will be more focused on shadows than highlights.</p>
 
 <h2>Objectives</h2>
 
 <p>Add the following components to the application layout:</p>
 
 <ol>
-	<li><code>Button</code>&nbsp;for opening your gallery folder with&nbsp;the&nbsp;<code>id</code>&nbsp;attribute <code>btnGallery</code></li>
-	<li><code>ImageView</code>&nbsp;which will display gallery image&nbsp;with&nbsp;the&nbsp;<code>id</code>&nbsp;attribute <code>ivPhoto</code></li>
+	<li><code>Slider</code> widget for specifying the photo <strong>saturation</strong> with the <code>id</code> attribute <code>slSaturation</code>; the values range from -250 to 250 with the step size 10 and initial value 0</li>
+	<li><code>Slider</code> widget for specifying the photo <strong>gamma</strong> with the <code>id</code> attribute <code>slGamma</code>; the values range from 0.2 to 4 with the step size 0.2 and initial value 1</li>
 </ol>
 
-<p>Then you need to add <code>OnClick</code> method to your the <code>galleryButton</code>. It should launch new Intent like:<br />
-<code>Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)</code></p>
+<p><strong>The</strong> <strong>saturation filter </strong>can be calculated in the following way:</p>
 
-<p>Then you need to code&nbsp;what happens when this activity returns some result&nbsp;<br />
-<code>resultLauncher = registerForActivityResult(StartActivityForResult()) { result -&gt;<br />
-if (result.resultCode == Activity.RESULT_OK)<br />
-{ ... }<br />
-}</code><br />
-That is mainly setting URI of&nbsp;<code>ivPhoto</code>&nbsp;to&nbsp;the returned URI .<br />
-Generally you must google how to do this stuff.</p>
+<p>R = alpha*(R - rgb_avg) + rgb_avg<br>
+G = alpha*(G - rgb_avg) + rgb_avg<br>
+B = alpha*(B - rgb_avg) + rgb_avg</p>
+
+<p><strong>where: </strong><br>
+alpha = (255+<strong>saturation</strong>)/(255-<strong>saturation</strong>)<br>
+rgb_avg = (R+G+B)/3 (RGB values before applying the filter).</p>
+
+<p><strong>saturation </strong>is simply the current saturation slider value.</p>
+
+<p><strong>The</strong> <strong>gamma filter </strong>can be calculated in the following way:</p>
+
+<p><span class="math-tex">\(R= {255 * (R/255)^g}\)</span><br>
+<span class="math-tex">\(G = 255 * (G/255)^g\)</span><br>
+<span class="math-tex">\(B = 255 * (B/255)^g\)</span></p>
+
+<p><strong>where: </strong><br>
+<strong>g</strong> is simply current gamma slider value.</p>
+
+<p>Once again tests allow some margin rounding error, but it's recommended to use Ints and use Double only when necessary (power operations).</p>
+
+<p>As you already know the order in which filters are applied matter, so</p>
+
+<p>To pass the tests filters must be applied in the following order:</p>
+
+<p>brightnessFilter -&gt; contrastFilter -&gt; saturation Filter -&gt; gammaFilter</p>
 
 <h2>Examples</h2>
 
-<p><img alt="" height="530" name="photo1_1.png" src="https://ucarecdn.com/065d1db1-06da-4807-86ec-140de319f2d6/" width="280" /></p>
+<p><img alt="" height="520" name="image.png" src="https://ucarecdn.com/14586efa-02e3-4082-9cf9-5bb49efd39bb/" width="270"></p>
 
-<p><img alt="" height="530" name="photo1_2.png" src="https://ucarecdn.com/fe6cf6f0-e595-479a-84bf-5cd2e7093dfe/" width="280" /></p>
+<p><img alt="" height="520" name="image.png" src="https://ucarecdn.com/52769e58-3316-4e5a-bc3e-2a411b2c54a2/" width="270"></p>

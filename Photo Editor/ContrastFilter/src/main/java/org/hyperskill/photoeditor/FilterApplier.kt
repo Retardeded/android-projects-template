@@ -29,10 +29,14 @@ object FilterApplier {
                 G = Color.green(pixels[index])
                 B = Color.blue(pixels[index])
 
+                R = checkBounds(R + brightnessValue)
+                G = checkBounds(G + brightnessValue)
+                B = checkBounds(B + brightnessValue)
+
                 pixels[index] = Color.rgb(
-                    checkBounds(alpha*(R - u_mean) + u_mean + brightnessValue),
-                    checkBounds(alpha*(G - u_mean) + u_mean + brightnessValue),
-                    checkBounds(alpha*(B - u_mean) + u_mean + brightnessValue))
+                    checkBounds(alpha*(R - u_mean) + u_mean ),
+                    checkBounds(alpha*(G - u_mean) + u_mean ),
+                    checkBounds(alpha*(B - u_mean) + u_mean ))
 
             }
         }

@@ -1,18 +1,18 @@
 <h2>Description</h2>
 
-<p>In this stage, we will add another filter&nbsp;- <strong>contrast filter</strong>.<br />
+<p>In this stage, we will add another filter&nbsp;-&nbsp;<strong>contrast filter</strong>.<br />
 A contrast value of&nbsp;<strong>0&nbsp;</strong>means that all pixels have the same brightness value. A contrast value of&nbsp;<strong>1&nbsp;</strong>means that the difference between the highest brightness and lowest brightness is 255.<br />
 To regulate contrast we must be able to spread/tight up each pixel brightness from the average image brightness.<br />
-Contrast filter isn&#39;t really&nbsp;harder&nbsp;to implement than brightness filter, but that doesn&#39;t necessarily&nbsp; mean this stage difficulty is the same as stage 2.<br />
-The catch is, both filter should effect each other and work at the same time.<br />
-Also another filter means we will add&nbsp;yet another slider which will regulate the <strong>contrast value</strong>.&nbsp;</p>
+The Contrast filter isn&#39;t really&nbsp;harder&nbsp;to implement than the brightness filter, but that doesn&#39;t necessarily&nbsp; mean this stage difficulty is the same as stage 2.<br />
+The catch is, both filters should affect each other and work at the same time.<br />
+Also another filter means we will add&nbsp;yet another slider which will regulate the&nbsp;<strong>contrast value</strong>.&nbsp;</p>
 
 <h2>Objectives</h2>
 
 <p>Add the following components to the application layout:</p>
 
 <ol>
-	<li><code>Slider</code>&nbsp;widget for specifying the photo <strong>contrast</strong> with the&nbsp;<code>id</code>&nbsp;attribute&nbsp;<code>slContrast</code>; the values range from -250&nbsp;to 250&nbsp;with the step size 10&nbsp;and initial value 0</li>
+	<li><code>Slider</code>&nbsp;widget for specifying the photo&nbsp;<strong>contrast</strong>&nbsp;with the&nbsp;<code>id</code>&nbsp;attribute&nbsp;<code>slContrast</code>; the values range from -250&nbsp;to 250&nbsp;with the step size 10&nbsp;and initial value 0</li>
 </ol>
 
 <p><strong>The</strong>&nbsp;<strong>contrast filter values&nbsp;</strong>can be calculated in the following way:</p>
@@ -21,16 +21,26 @@ Also another filter means we will add&nbsp;yet another slider which will regulat
 G&nbsp;= alpha*(G - avg_bright) + avg_bright<br />
 B&nbsp;= alpha*(B - avg_bright) + avg_bright</p>
 
-<p><strong>where: </strong><br />
+<p><strong>where:</strong><br />
 alpha = (255+<strong>contrast</strong>)/(255-<strong>contrast</strong>)<br />
 avg_bright = average image brightness</p>
 
-<p><strong>contrast&nbsp;</strong>is simply current contrast slider value.</p>
+<p><strong>contrast&nbsp;</strong>is simply the current contrast slider value.</p>
 
-<p>Once again test allow some margin rounding error, but it&#39;s recommended to use just Ints.</p>
+<p>Once again tests allow some margin rounding error, but it&#39;s recommended to use just Ints.</p>
+
+<p><strong>Now the most&nbsp;crucial part!</strong></p>
+
+<p>Order in which filters are applied matters, also it doesn&#39;t make sense to make filter operations for out of bounds colors.</p>
+
+<p>To pass the tests filters must be applied in the following order:</p>
+
+<p>brightnessFilter -&gt; contrastFilter</p>
 
 <h2>Examples</h2>
 
-<p><img alt="" height="520" name="image.png" src="https://ucarecdn.com/a20008df-134e-47ec-9b10-4b34c96c28db/" width="270" /></p>
+<p>&nbsp;</p>
 
-<p><img alt="" height="520" name="image.png" src="https://ucarecdn.com/bf815156-b446-4e9d-95fc-c6fc6bdaed19/" width="270" /></p>
+<p><img alt="" height="520" name="image.png" src="https://ucarecdn.com/5eed5bef-429d-443e-8830-7965376be9ac/" width="270" /></p>
+
+<p><img alt="" height="520" name="image.png" src="https://ucarecdn.com/e8a54a20-26b7-4bd6-8494-3a1897031718/" width="270" /></p>

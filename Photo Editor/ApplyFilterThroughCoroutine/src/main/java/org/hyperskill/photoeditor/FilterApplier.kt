@@ -54,9 +54,13 @@ class FilterApplier(
 
                 val u = (R+G+B)/3
 
-                R = checkBounds((alpha1*(R - u_mean) + u_mean) + brightnessValue)
-                G = checkBounds((alpha1*(G - u_mean) + u_mean) + brightnessValue)
-                B = checkBounds((alpha1*(B - u_mean) + u_mean) + brightnessValue)
+                R = checkBounds(R + brightnessValue)
+                G = checkBounds(G + brightnessValue)
+                B = checkBounds(B + brightnessValue)
+
+                R = checkBounds((alpha1*(R - u_mean) + u_mean))
+                G = checkBounds((alpha1*(G - u_mean) + u_mean))
+                B = checkBounds((alpha1*(B - u_mean) + u_mean))
 
                 R = checkBounds((alpha2*(R - u) + u))
                 G = checkBounds((alpha2*(G - u) + u))

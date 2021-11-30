@@ -2,6 +2,7 @@ package org.hyperskill.photoeditor
 
 import android.graphics.Bitmap
 import android.graphics.Color
+import kotlin.math.pow
 
 object FilterApplier {
 
@@ -34,18 +35,22 @@ object FilterApplier {
 
                 val u = (R+G+B)/3
 
-                R = checkBounds((alpha1*(R - u_mean) + u_mean) + brightnessValue)
-                G = checkBounds((alpha1*(G - u_mean) + u_mean) + brightnessValue)
-                B = checkBounds((alpha1*(B - u_mean) + u_mean) + brightnessValue)
+                R = checkBounds(R + brightnessValue)
+                G = checkBounds(G + brightnessValue)
+                B = checkBounds(B + brightnessValue)
+
+                R = checkBounds((alpha1*(R - u_mean) + u_mean))
+                G = checkBounds((alpha1*(G - u_mean) + u_mean))
+                B = checkBounds((alpha1*(B - u_mean) + u_mean))
 
                 R = checkBounds((alpha2*(R - u) + u))
                 G = checkBounds((alpha2*(G - u) + u))
                 B = checkBounds((alpha2*(B - u) + u))
 
 
-                R = (255 * Math.pow(R/255.0, gamma.toDouble())).toInt()
-                G = (255 * Math.pow(G/255.0, gamma.toDouble())).toInt()
-                B = (255 * Math.pow(B/255.0, gamma.toDouble())).toInt()
+                R = (255 * (R / 255.0).pow(gamma)).toInt()
+                G = (255 * (G / 255.0).pow(gamma)).toInt()
+                B = (255 * (B / 255.0).pow(gamma)).toInt()
 
 
                 pixels[index] = Color.rgb(R,G,B)
