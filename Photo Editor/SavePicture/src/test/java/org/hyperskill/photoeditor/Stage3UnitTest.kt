@@ -3,6 +3,7 @@ package org.hyperskill.photoeditor
 import android.graphics.BitmapFactory
 import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
+import android.provider.MediaStore
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.Robolectric
@@ -36,12 +37,13 @@ class Stage3UnitTest {
         val cr = activity.contentResolver
         val output = ByteArrayOutputStream()
         val crs = shadowOf(cr)
-        val uri = Uri.parse("content://media/external/images/media/1")
+        val uri = Uri.parse(MediaStore.Images.Media.EXTERNAL_CONTENT_URI.toString() + "/1")
+        var message2 = uri.toString()
         crs.registerOutputStream(uri, output)
         btnSave.performClick()
         crs.registerInputStream(uri, ByteArrayInputStream(output.toByteArray()))
         val bitmap = cr.openInputStream(uri!!).use(BitmapFactory::decodeStream)!!
-        assertEquals(bitmap2.width, bitmap.width)
+        assertEquals(message2, bitmap2.width, bitmap.width)
     }
 
 }

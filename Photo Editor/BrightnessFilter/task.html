@@ -1,31 +1,25 @@
 <h2>Description</h2>
 
-<p>In this stage, we will add the <strong>galleryButton</strong> as well as <strong>imageView</strong> to display image chosen from the gallery.&nbsp;<br />
-The user should be able to load any image from his gallery to imageView.<br />
-In your virtual device you probably don&#39;t have any images saved in your gallery folder, so to test your application properly&nbsp;use default camera app and make some.</p>
+<p>In this stage, we will implement our first filter - <strong>brightness filter</strong>.<br />
+Image <strong>brightness</strong> is simply the average RGB value - (R+G+B)/3<br />
+To increase/decrease it simply add/subtract the same amount from each rgb color.<br />
+We will regulate image&nbsp;<strong>brightness&nbsp;</strong>with a slider.</p>
 
 <h2>Objectives</h2>
 
 <p>Add the following components to the application layout:</p>
 
 <ol>
-	<li><code>Button</code>&nbsp;for opening your gallery folder with&nbsp;the&nbsp;<code>id</code>&nbsp;attribute <code>btnGallery</code></li>
-	<li><code>ImageView</code>&nbsp;which will display gallery image&nbsp;with&nbsp;the&nbsp;<code>id</code>&nbsp;attribute <code>ivPhoto</code></li>
+	<li><code>Slider</code>&nbsp;widget for specifying the photo brightness&nbsp;with the&nbsp;<code>id</code>&nbsp;attribute&nbsp;<code>slBrightness</code>; the values range from -250&nbsp;to 250&nbsp;with the step size 10&nbsp;and initial value 0</li>
 </ol>
 
-<p>Then you need to add <code>OnClick</code> method to your the <code>galleryButton</code>. It should launch new Intent like:<br />
-<code>Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)</code></p>
-
-<p>Then you need to code&nbsp;what happens when this activity returns some result&nbsp;<br />
-<code>resultLauncher = registerForActivityResult(StartActivityForResult()) { result -&gt;<br />
-if (result.resultCode == Activity.RESULT_OK)<br />
-{ ... }<br />
-}</code><br />
-That is mainly setting URI of&nbsp;<code>ivPhoto</code>&nbsp;to&nbsp;the returned URI .<br />
-Generally you must google how to do this stuff.</p>
+<p>Then&nbsp;attach onChangeListener to this slider, that will apply&nbsp;<strong>brightness filter</strong>.<br />
+<strong>The Brightness filter&nbsp;</strong>should simply add the current value of&nbsp;<strong>brightnessSlider&nbsp;</strong>to each RGB value of the default photo bitmap<strong>&nbsp;</strong>and check whether the new value is in the correct boundaries (0,255)<strong>.</strong><br />
+Remember that every time a user loads a new image you must save it&#39;s default&nbsp;<code>Bitmap</code>&nbsp;and operate on it while applying a brightness filter (not on current <code>Bitmap</code>, because filter will erase image details).<br />
+Lastly, tests allow some margin error because of possible differences that may occur due to rounding numbers, but try to use Integers as much as possible, otherwise use Double (won&#39;t be needed in this stage though).</p>
 
 <h2>Examples</h2>
 
-<p><img alt="" height="530" name="photo1_1.png" src="https://ucarecdn.com/065d1db1-06da-4807-86ec-140de319f2d6/" width="280" /></p>
+<p><img alt="" height="520" name="p_2_1.png" src="https://ucarecdn.com/53488376-e1bd-4228-8f51-11eba3417b78/" width="270" /></p>
 
-<p><img alt="" height="530" name="photo1_2.png" src="https://ucarecdn.com/fe6cf6f0-e595-479a-84bf-5cd2e7093dfe/" width="280" /></p>
+<p><img alt="" height="520" name="p_2_2.png" src="https://ucarecdn.com/43ed6152-275f-411a-a9db-eba8dc6d859d/" width="270" /></p>

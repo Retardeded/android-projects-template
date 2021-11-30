@@ -1,31 +1,36 @@
 <h2>Description</h2>
 
-<p>In this stage, we will add the <strong>galleryButton</strong> as well as <strong>imageView</strong> to display image chosen from the gallery.&nbsp;<br />
-The user should be able to load any image from his gallery to imageView.<br />
-In your virtual device you probably don&#39;t have any images saved in your gallery folder, so to test your application properly&nbsp;use default camera app and make some.</p>
+<p>In this stage, we will add another filter&nbsp;- <strong>contrast filter</strong>.<br />
+A contrast value of&nbsp;<strong>0&nbsp;</strong>means that all pixels have the same brightness value. A contrast value of&nbsp;<strong>1&nbsp;</strong>means that the difference between the highest brightness and lowest brightness is 255.<br />
+To regulate contrast we must be able to spread/tight up each pixel brightness from the average image brightness.<br />
+Contrast filter isn&#39;t really&nbsp;harder&nbsp;to implement than brightness filter, but that doesn&#39;t necessarily&nbsp; mean this stage difficulty is the same as stage 2.<br />
+The catch is, both filter should effect each other and work at the same time.<br />
+Also another filter means we will add&nbsp;yet another slider which will regulate the <strong>contrast value</strong>.&nbsp;</p>
 
 <h2>Objectives</h2>
 
 <p>Add the following components to the application layout:</p>
 
 <ol>
-	<li><code>Button</code>&nbsp;for opening your gallery folder with&nbsp;the&nbsp;<code>id</code>&nbsp;attribute <code>btnGallery</code></li>
-	<li><code>ImageView</code>&nbsp;which will display gallery image&nbsp;with&nbsp;the&nbsp;<code>id</code>&nbsp;attribute <code>ivPhoto</code></li>
+	<li><code>Slider</code>&nbsp;widget for specifying the photo <strong>contrast</strong> with the&nbsp;<code>id</code>&nbsp;attribute&nbsp;<code>slContrast</code>; the values range from -250&nbsp;to 250&nbsp;with the step size 10&nbsp;and initial value 0</li>
 </ol>
 
-<p>Then you need to add <code>OnClick</code> method to your the <code>galleryButton</code>. It should launch new Intent like:<br />
-<code>Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)</code></p>
+<p><strong>The</strong>&nbsp;<strong>contrast filter values&nbsp;</strong>can be calculated in the following way:</p>
 
-<p>Then you need to code&nbsp;what happens when this activity returns some result&nbsp;<br />
-<code>resultLauncher = registerForActivityResult(StartActivityForResult()) { result -&gt;<br />
-if (result.resultCode == Activity.RESULT_OK)<br />
-{ ... }<br />
-}</code><br />
-That is mainly setting URI of&nbsp;<code>ivPhoto</code>&nbsp;to&nbsp;the returned URI .<br />
-Generally you must google how to do this stuff.</p>
+<p>R&nbsp;= alpha*(R - avg_bright) + avg_bright<br />
+G&nbsp;= alpha*(G - avg_bright) + avg_bright<br />
+B&nbsp;= alpha*(B - avg_bright) + avg_bright</p>
+
+<p><strong>where: </strong><br />
+alpha = (255+<strong>contrast</strong>)/(255-<strong>contrast</strong>)<br />
+avg_bright = average image brightness</p>
+
+<p><strong>contrast&nbsp;</strong>is simply current contrast slider value.</p>
+
+<p>Once again test allow some margin rounding error, but it&#39;s recommended to use just Ints.</p>
 
 <h2>Examples</h2>
 
-<p><img alt="" height="530" name="photo1_1.png" src="https://ucarecdn.com/065d1db1-06da-4807-86ec-140de319f2d6/" width="280" /></p>
+<p><img alt="" height="520" name="image.png" src="https://ucarecdn.com/a20008df-134e-47ec-9b10-4b34c96c28db/" width="270" /></p>
 
-<p><img alt="" height="530" name="photo1_2.png" src="https://ucarecdn.com/fe6cf6f0-e595-479a-84bf-5cd2e7093dfe/" width="280" /></p>
+<p><img alt="" height="520" name="image.png" src="https://ucarecdn.com/bf815156-b446-4e9d-95fc-c6fc6bdaed19/" width="270" /></p>
