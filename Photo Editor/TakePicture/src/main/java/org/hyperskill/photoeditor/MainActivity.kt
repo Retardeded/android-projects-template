@@ -17,38 +17,17 @@ import androidx.appcompat.app.AppCompatActivity
 class MainActivity : AppCompatActivity() {
 
     private lateinit var currentImage: ImageView
-    private lateinit var resultLauncher: ActivityResultLauncher<Intent>
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         bindViews()
 
-        resultLauncher = registerForActivityResult(StartActivityForResult()) { result ->
-            if (result.resultCode == Activity.RESULT_OK) {
-                setPhoto(result)
-            }
-        }
         //do not change this line
         currentImage.setImageBitmap(createBitmap())
     }
 
-    private fun setPhoto(result: ActivityResult) {
-        val data: Intent? = result.data
-        val contentUri = data!!.data
-        currentImage!!.setImageURI(contentUri)
-    }
-
     private fun bindViews() {
         currentImage = findViewById(R.id.ivPhoto)
-    }
-
-    fun openGallery(view: View) {
-        val i = Intent(
-            Intent.ACTION_PICK,
-            MediaStore.Images.Media.EXTERNAL_CONTENT_URI
-        )
-        resultLauncher.launch(i)
     }
 
     // do not change this function
