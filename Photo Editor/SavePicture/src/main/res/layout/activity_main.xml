@@ -41,9 +41,8 @@
 
     <com.google.android.material.slider.Slider
         android:id="@+id/slBrightness"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
         android:layout_marginTop="32dp"
         android:layout_marginBottom="32dp"
         android:value="0"
@@ -51,8 +50,18 @@
         android:valueFrom="-250"
         android:valueTo="250"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tvBrightness"
         app:layout_constraintTop_toBottomOf="@id/btnGallery" />
 
+    <TextView
+        android:id="@+id/tvBrightness"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="brightness"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/slBrightness"
+        app:layout_constraintEnd_toStartOf="@+id/slBrightness"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

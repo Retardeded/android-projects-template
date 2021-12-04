@@ -41,9 +41,8 @@
 
     <com.google.android.material.slider.Slider
         android:id="@+id/slBrightness"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
         android:layout_marginTop="32dp"
         android:layout_marginBottom="32dp"
         android:value="0"
@@ -51,53 +50,89 @@
         android:valueFrom="-250"
         android:valueTo="250"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tvBrightness"
         app:layout_constraintTop_toBottomOf="@id/btnGallery" />
+
+    <TextView
+        android:id="@+id/tvBrightness"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="brightness"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/slBrightness"
+        app:layout_constraintEnd_toStartOf="@+id/slBrightness"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.slider.Slider
         android:id="@+id/slContrast"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginBottom="32dp"
         android:value="0"
         android:stepSize="10"
         android:valueFrom="-250"
         android:valueTo="250"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tvContrast"
         app:layout_constraintTop_toBottomOf="@id/slBrightness" />
+
+    <TextView
+        android:id="@+id/tvContrast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text=" contrast "
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/slContrast"
+        app:layout_constraintEnd_toStartOf="@+id/slContrast"
+        app:layout_constraintStart_toStartOf="parent" />
+
 
     <com.google.android.material.slider.Slider
         android:id="@+id/slSaturation"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginBottom="16dp"
         android:value="0"
         android:stepSize="10"
         android:valueFrom="-250"
         android:valueTo="250"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tvSaturation"
         app:layout_constraintTop_toBottomOf="@id/slContrast" />
+
+    <TextView
+        android:id="@+id/tvSaturation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="saturation"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/slSaturation"
+        app:layout_constraintEnd_toStartOf="@+id/slSaturation"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.slider.Slider
         android:id="@+id/slGamma"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginBottom="32dp"
         android:value="1"
         android:stepSize="0.2"
         android:valueFrom="0.2"
         android:valueTo="4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tvGamma"
         app:layout_constraintTop_toBottomOf="@id/slSaturation" />
+
+    <TextView
+        android:id="@+id/tvGamma"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="  gamma   "
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/slGamma"
+        app:layout_constraintEnd_toStartOf="@+id/slGamma"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

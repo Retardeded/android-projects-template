@@ -114,7 +114,6 @@ class Stage2UnitTest {
             assertTrue(message2, Math.abs(RGB0.third - 120 - RGB2.third) <= marginError)
         }
 
-        slBrightness.value -= slBrightness.stepSize * 8
     }
 
 
@@ -125,9 +124,7 @@ class Stage2UnitTest {
         val btnGallery = activity.findViewById<Button>(R.id.btnGallery)
         btnGallery.performClick()
         val shadowActivity: ShadowActivity = Shadows.shadowOf(activity)
-        // Determine if two intents are the same for the purposes of intent resolution (filtering).
-        // That is, if their action, data, type, class, and categories are the same. This does
-        // not compare any extra data included in the intents
+
         val activityResult = createGalleryPickActivityResultStub(activity)
         val intent = shadowActivity!!.peekNextStartedActivityForResult().intent
         Shadows.shadowOf(activity).receiveResult(

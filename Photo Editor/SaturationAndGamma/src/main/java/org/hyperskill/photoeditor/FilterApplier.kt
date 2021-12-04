@@ -48,9 +48,9 @@ object FilterApplier {
                 B = checkBounds((alpha2*(B - u) + u))
 
 
-                R = (255 * (R / 255.0).pow(gamma)).toInt()
-                G = (255 * (G / 255.0).pow(gamma)).toInt()
-                B = (255 * (B / 255.0).pow(gamma)).toInt()
+                R = checkBounds((255 * (R / 255.0).pow(gamma)).toInt())
+                G = checkBounds((255 * (G / 255.0).pow(gamma)).toInt())
+                B = checkBounds((255 * (B / 255.0).pow(gamma)).toInt())
 
 
                 pixels[index] = Color.rgb(R,G,B)
