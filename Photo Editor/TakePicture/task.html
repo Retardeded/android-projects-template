@@ -1,35 +1,35 @@
 <h2>Description</h2>
 
-<p>In this stage, we will add the <strong>galleryButton</strong> as well as <strong>imageView</strong> to display image chosen from the gallery.&nbsp;<br />
+<p>In this stage, you will add the <em>galleryButton</em> as well as <em>imageView</em> to display image chosen from the gallery. <br>
 The user should be able to load any image from his gallery to imageView.</p>
 
-<p>The imageView is already set up in layout and MainActivity, so that it has a default bitmap from the start. Tests in later stages depend on this bitmap, so do not change this setup.<br />
-In your virtual device you probably don&#39;t have any images saved in your gallery folder, so to test your application properly&nbsp;use default the camera app and make some.&nbsp;</p>
+<p>The imageView is already set up in layout and MainActivity, so that it has a default bitmap from the start. Tests in later stages depend on this bitmap, so do not change this setup.<br>
+In your virtual device you probably don't have any images saved in your gallery folder, so to test your application properly use default camera app and make some. </p>
 
 <h2>Objectives</h2>
 
 <p>Add the following components to the application layout:</p>
 
 <ol>
-	<li><code>Button</code>&nbsp;for opening your gallery folder with&nbsp;the&nbsp;<code>id</code>&nbsp;attribute <code>btnGallery</code></li>
-	<li><code>ImageView</code>&nbsp;which will display gallery image&nbsp;with&nbsp;the&nbsp;<code>id</code>&nbsp;attribute <code>ivPhoto(already done)</code></li>
+	<li><code>Button</code> for opening your gallery folder with the <code>id</code> attribute <code>btnGallery</code></li>
+	<li><code>ImageView</code> which will display gallery image with the <code>id</code> attribute <code>ivPhoto(already done)</code></li>
 </ol>
 
-<p>Then you need to add <code>OnClick</code> method to your the <code>galleryButton</code>. It should launch new Intent like:<br />
+<p>Then you need to add <code>OnClick</code> method to your the <code>galleryButton</code>. It should launch new Intent like:<br>
 <code>Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)</code></p>
 
-<p>Then you need to code&nbsp;what happens when this activity returns some result&nbsp;<br />
-<code>resultLauncher = registerForActivityResult(StartActivityForResult()) { result -&gt;<br />
-if (result.resultCode == Activity.RESULT_OK)<br />
-{ ... }<br />
-}</code><br />
-That is mainly setting the URI of&nbsp;<code>ivPhoto</code>&nbsp;to&nbsp;the returned URI .<br />
+<p>Then you need to code what happens when this activity returns some result <br>
+<code>resultLauncher = registerForActivityResult(StartActivityForResult()) { result -&gt;<br>
+if (result.resultCode == Activity.RESULT_OK)<br>
+{ ... }<br>
+}</code><br>
+That is mainly setting the URI of <code>ivPhoto</code> to the returned URI .<br>
 Generally you must google how to do this stuff.</p>
 
 <h2>Examples</h2>
 
-<p><img alt="" height="523" name="p_1_1.png" src="https://ucarecdn.com/7f82310e-1bd4-4d3a-9766-e2377545faa7/" width="270" /></p>
+<p> </p>
 
-<p>&nbsp;</p>
+<p> </p>
 
-<p><img alt="" height="523" name="p_1_2.png" src="https://ucarecdn.com/92dbc109-bb2d-45f3-8ea9-3ace7b735430/" width="270" /></p>
+<p><img alt="" height="520" name="Android Emulator - Pixel_3a_API_30_x86_5554 2021-12-04 19-28-09.gif" src="https://ucarecdn.com/be6bf9e2-425d-45db-9d12-0ac35cc50454/" width="270"></p>

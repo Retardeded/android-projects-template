@@ -17,7 +17,7 @@ object FilterApplier {
         var B: Int
         var index: Int
 
-        var alpha = (255+contrast)/(255-contrast)
+        var alpha = (255+contrast).toDouble()/(255-contrast)
         var u_mean = calculateBrightness(source)
 
         for (y in 0 until height) {
@@ -34,9 +34,9 @@ object FilterApplier {
                 B = checkBounds(B + brightnessValue)
 
                 pixels[index] = Color.rgb(
-                    checkBounds(alpha*(R - u_mean) + u_mean ),
-                    checkBounds(alpha*(G - u_mean) + u_mean ),
-                    checkBounds(alpha*(B - u_mean) + u_mean ))
+                    checkBounds((alpha*(R - u_mean) + u_mean).toInt() ),
+                    checkBounds((alpha*(G - u_mean) + u_mean).toInt() ),
+                    checkBounds((alpha*(B - u_mean) + u_mean).toInt() ))
 
             }
         }

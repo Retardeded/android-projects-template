@@ -86,7 +86,7 @@ class MainActivity : AppCompatActivity() {
     private fun applyFilterChange() {
         if(!this::defaultImageBitMap.isInitialized) return
         val bitmap = defaultImageBitMap
-        val filteredBitmap = FilterApplier.apply(bitmap, brightnessSlider.value.toInt(), contrastSlider.value.toInt(), saturationSlider.value.toInt(), gammaSlider.value.toInt())
+        val filteredBitmap = FilterApplier.apply(bitmap, brightnessSlider.value.toInt(), contrastSlider.value.toInt(), saturationSlider.value.toInt(), gammaSlider.value.toDouble())
         loadImage(filteredBitmap)
     }
     private fun loadImage(bmp: Bitmap) {

@@ -6,7 +6,7 @@ import kotlin.math.pow
 
 object FilterApplier {
 
-    fun apply(source: Bitmap, brightnessValue:Int, contrast:Int, saturation:Int, gamma:Int): Bitmap {
+    fun apply(source: Bitmap, brightnessValue:Int, contrast:Int, saturation:Int, gamma:Double): Bitmap {
         val width = source.width
         val height = source.height
         val pixels = IntArray(width * height)
@@ -18,8 +18,8 @@ object FilterApplier {
         var B: Int
         var index: Int
 
-        var alpha1 = (255+contrast)/(255-contrast)
-        var alpha2 = (255+saturation)/(255-saturation)
+        var alpha1 = (255+contrast.toDouble())/(255-contrast)
+        var alpha2 = (255+saturation.toDouble())/(255-saturation)
         var u_mean = calculateBrightness(source)
 
         for (y in 0 until height) {
@@ -39,13 +39,13 @@ object FilterApplier {
                 G = checkBounds(G + brightnessValue)
                 B = checkBounds(B + brightnessValue)
 
-                R = checkBounds((alpha1*(R - u_mean) + u_mean))
-                G = checkBounds((alpha1*(G - u_mean) + u_mean))
-                B = checkBounds((alpha1*(B - u_mean) + u_mean))
+                R = checkBounds(((alpha1*(R - u_mean) + u_mean)).toInt())
+                G = checkBounds(((alpha1*(G - u_mean) + u_mean)).toInt())
+                B = checkBounds(((alpha1*(B - u_mean) + u_mean)).toInt())
 
-                R = checkBounds((alpha2*(R - u) + u))
-                G = checkBounds((alpha2*(G - u) + u))
-                B = checkBounds((alpha2*(B - u) + u))
+                R = checkBounds(((alpha2*(R - u) + u)).toInt())
+                G = checkBounds(((alpha2*(G - u) + u)).toInt())
+                B = checkBounds(((alpha2*(B - u) + u)).toInt())
 
 
                 R = checkBounds((255 * (R / 255.0).pow(gamma)).toInt())

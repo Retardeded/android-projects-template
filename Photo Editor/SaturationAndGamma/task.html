@@ -1,8 +1,8 @@
 <h2>Description</h2>
 
-<p>In this stage, we will add two more filters - <strong>saturation </strong>and<strong> gamma</strong>.<br>
-So now four filters should affect image look.<br>
-To increase <strong>saturation </strong>we must increase color intensity without affecting it's brightness.<br>
+<p>In this stage, we will add two more&nbsp;filters - <strong>saturation </strong>and<strong> gamma</strong>.<br />
+So now four filters should affect image look.<br />
+To increase&nbsp;<strong>saturation&nbsp;</strong>we must increase color&nbsp;intensity without affecting it&#39;s brightness.<br />
 Increase in <strong>gamma</strong> value will mean that the image will be more focused on shadows than highlights.</p>
 
 <h2>Objectives</h2>
@@ -10,32 +10,32 @@ Increase in <strong>gamma</strong> value will mean that the image will be more f
 <p>Add the following components to the application layout:</p>
 
 <ol>
-	<li><code>Slider</code> widget for specifying the photo <strong>saturation</strong> with the <code>id</code> attribute <code>slSaturation</code>; the values range from -250 to 250 with the step size 10 and initial value 0</li>
-	<li><code>Slider</code> widget for specifying the photo <strong>gamma</strong> with the <code>id</code> attribute <code>slGamma</code>; the values range from 0.2 to 4 with the step size 0.2 and initial value 1</li>
+	<li><code>Slider</code>&nbsp;widget for specifying the photo <em>saturation</em>&nbsp;with the&nbsp;<code>id</code>&nbsp;attribute&nbsp;<code>slSaturation</code>; the values range from -250&nbsp;to 250&nbsp;with the step size 10&nbsp;and initial value 0</li>
+	<li><code>Slider</code>&nbsp;widget for specifying the photo <em>gamma</em>&nbsp;with the&nbsp;<code>id</code>&nbsp;attribute&nbsp;<code>slGamma</code>; the values range from 0.2&nbsp;to 4&nbsp;with the step size 0.2&nbsp;and initial value 1</li>
 </ol>
 
-<p><strong>The</strong> <strong>saturation filter </strong>can be calculated in the following way:</p>
+<p>The saturation filter<strong>&nbsp;</strong>can be calculated in the following way:</p>
 
-<p>R = alpha*(R - rgb_avg) + rgb_avg<br>
-G = alpha*(G - rgb_avg) + rgb_avg<br>
-B = alpha*(B - rgb_avg) + rgb_avg</p>
+<p>R&nbsp;= alpha*(R - rgb_avg) + rgb_avg<br />
+G&nbsp;= alpha*(G - rgb_avg) +&nbsp;rgb_avg<br />
+B&nbsp;= alpha*(B - rgb_avg) +&nbsp;rgb_avg</p>
 
-<p><strong>where: </strong><br>
-alpha = (255+<strong>saturation</strong>)/(255-<strong>saturation</strong>)<br>
+<p>where:<strong> </strong><br />
+alpha = (255+<em>saturation</em>)/(255-<em>saturation</em>)<br />
 rgb_avg = (R+G+B)/3 (RGB values before applying the filter).</p>
 
-<p><strong>saturation </strong>is simply the current saturation slider value.</p>
+<p><em>saturation</em><strong>&nbsp;</strong>is simply the current saturation slider value.</p>
 
-<p><strong>The</strong> <strong>gamma filter </strong>can be calculated in the following way:</p>
+<p>The gamma filter<strong>&nbsp;</strong>can be calculated in the following way:</p>
 
-<p><span class="math-tex">\(R= {255 * (R/255)^g}\)</span><br>
-<span class="math-tex">\(G = 255 * (G/255)^g\)</span><br>
+<p><span class="math-tex">\(R= {255 * (R/255)^g}\)</span><br />
+<span class="math-tex">\(G = 255 * (G/255)^g\)</span><br />
 <span class="math-tex">\(B = 255 * (B/255)^g\)</span></p>
 
-<p><strong>where: </strong><br>
-<strong>g</strong> is simply current gamma slider value.</p>
+<p>where:<strong> </strong><br />
+<em>g</em>&nbsp;is simply current gamma slider value.</p>
 
-<p>Once again tests allow some margin rounding error, but it's recommended to use Ints and use Double only when necessary (power operations).</p>
+<p>Once again tests allow some margin rounding error, but it&#39;s recommended to use Ints and use Double only when necessary (gamma needs to be Double/Float.</p>
 
 <p>As you already know the order in which filters are applied matter, so</p>
 
@@ -45,6 +45,4 @@ rgb_avg = (R+G+B)/3 (RGB values before applying the filter).</p>
 
 <h2>Examples</h2>
 
-<p><img alt="" height="520" name="image.png" src="https://ucarecdn.com/14586efa-02e3-4082-9cf9-5bb49efd39bb/" width="270"></p>
-
-<p><img alt="" height="520" name="image.png" src="https://ucarecdn.com/52769e58-3316-4e5a-bc3e-2a411b2c54a2/" width="270"></p>
+<p><img alt="" height="520" name="Android Emulator - Pixel_3a_API_30_x86_5554 2021-12-05 12-34-32.gif" src="https://ucarecdn.com/319a9c01-acb7-4a55-9704-1a23f58affce/" width="270" /></p>

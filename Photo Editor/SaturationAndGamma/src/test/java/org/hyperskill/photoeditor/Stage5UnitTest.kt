@@ -90,7 +90,7 @@ class Stage5UnitTest {
             slContrast.value += slContrast.stepSize
             slSaturation.value += slSaturation.stepSize * 10
             slSaturation.value += slSaturation.stepSize * 5
-            slGamma.value += slGamma.stepSize * 10
+            slGamma.value -= slGamma.stepSize * 2
 
             Shadows.shadowOf(Looper.getMainLooper()).idle()
             Thread.sleep(200)
@@ -101,9 +101,9 @@ class Stage5UnitTest {
         val RGB2 = singleColor(img2, 60, 70)
         val message2 = "val0 ${RGB0} val2 ${RGB2}"
         if (RGB0 != null) {
-            assertTrue(message2,Math.abs(12-RGB2.first) <= marginError)
-            assertTrue(message2,Math.abs(95-RGB2.second) <= marginError)
-            assertTrue(message2,Math.abs(150-RGB2.third) <= marginError)
+            assertTrue(message2,Math.abs(110-RGB2.first) <= marginError)
+            assertTrue(message2,Math.abs(244-RGB2.second) <= marginError)
+            assertTrue(message2,Math.abs(255-RGB2.third) <= marginError)
         }
     }
 
@@ -133,9 +133,9 @@ class Stage5UnitTest {
         val RGB2 = singleColor(img2, 80, 90)
         val message2 = "val0 ${RGB0} val2 ${RGB2}"
         if (RGB0 != null) {
-            assertTrue(message2,Math.abs(65-RGB2.first) <= marginError)
-            assertTrue(message2,Math.abs(65-RGB2.second) <= marginError)
-            assertTrue(message2,Math.abs(65-RGB2.third) <= marginError)
+            assertTrue(message2,Math.abs(79-RGB2.first) <= marginError)
+            assertTrue(message2,Math.abs(131-RGB2.second) <= marginError)
+            assertTrue(message2,Math.abs(195-RGB2.third) <= marginError)
         }
     }
 

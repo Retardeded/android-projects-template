@@ -70,7 +70,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun applyFilterChange() {
         GlobalScope.launch(Dispatchers.Main) {
-            filterApplier.applyFilterChange(defaultImageBitMap, brightnessSlider.value.toInt(), contrastSlider.value.toInt(), saturationSlider.value.toInt(), gammaSlider.value.toInt())
+            filterApplier.applyFilterChange(defaultImageBitMap, brightnessSlider.value.toInt(), contrastSlider.value.toInt(), saturationSlider.value.toInt(), gammaSlider.value.toDouble())
         }
     }
 

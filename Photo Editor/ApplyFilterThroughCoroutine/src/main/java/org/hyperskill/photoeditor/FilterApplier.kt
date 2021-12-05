@@ -7,13 +7,14 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlin.coroutines.CoroutineContext
+import kotlin.math.pow
 
 class FilterApplier(
     val selectedImage: ImageView,
     val parentContext: CoroutineContext
 )  {
     private val modelScope = CoroutineScope(parentContext)
-    suspend fun applyFilterChange(defaultImageBitMap:Bitmap, brightnessValue:Int, contrast:Int, saturation:Int, gamma:Int) {
+    suspend fun applyFilterChange(defaultImageBitMap:Bitmap, brightnessValue:Int, contrast:Int, saturation:Int, gamma:Double) {
         val filteredDeferred = modelScope.async(Dispatchers.Default) {
             apply(defaultImageBitMap, brightnessValue, contrast, saturation, gamma)
         }
@@ -25,7 +26,7 @@ class FilterApplier(
         selectedImage.setImageBitmap(bmp)
     }
 
-    fun apply(source: Bitmap, brightnessValue:Int, contrast:Int, saturation:Int, gamma:Int): Bitmap {
+    fun apply(source: Bitmap, brightnessValue:Int, contrast:Int, saturation:Int, gamma:Double): Bitmap {
         val width = source.width
         val height = source.height
         val pixels = IntArray(width * height)
@@ -37,8 +38,8 @@ class FilterApplier(
         var B: Int
         var index: Int
 
-        var alpha1 = (255+contrast)/(255-contrast)
-        var alpha2 = (255+saturation)/(255-saturation)
+        var alpha1 = (255+contrast.toDouble())/(255-contrast)
+        var alpha2 = (255+saturation.toDouble())/(255-saturation)
         var u_mean = calculateBrightness(source)
 
         for (y in 0 until height) {
@@ -58,18 +59,18 @@ class FilterApplier(
                 G = checkBounds(G + brightnessValue)
                 B = checkBounds(B + brightnessValue)
 
-                R = checkBounds((alpha1*(R - u_mean) + u_mean))
-                G = checkBounds((alpha1*(G - u_mean) + u_mean))
-                B = checkBounds((alpha1*(B - u_mean) + u_mean))
+                R = checkBounds(((alpha1*(R - u_mean) + u_mean)).toInt())
+                G = checkBounds(((alpha1*(G - u_mean) + u_mean)).toInt())
+                B = checkBounds(((alpha1*(B - u_mean) + u_mean)).toInt())
 
-                R = checkBounds((alpha2*(R - u) + u))
-                G = checkBounds((alpha2*(G - u) + u))
-                B = checkBounds((alpha2*(B - u) + u))
+                R = checkBounds(((alpha2*(R - u) + u)).toInt())
+                G = checkBounds(((alpha2*(G - u) + u)).toInt())
+                B = checkBounds(((alpha2*(B - u) + u)).toInt())
 
 
-                R = (255 * Math.pow(R/255.0, gamma.toDouble())).toInt()
-                G = (255 * Math.pow(G/255.0, gamma.toDouble())).toInt()
-                B = (255 * Math.pow(B/255.0, gamma.toDouble())).toInt()
+                R = checkBounds((255 * (R / 255.0).pow(gamma)).toInt())
+                G = checkBounds((255 * (G / 255.0).pow(gamma)).toInt())
+                B = checkBounds((255 * (B / 255.0).pow(gamma)).toInt())
 
 
                 pixels[index] = Color.rgb(R,G,B)

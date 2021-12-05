@@ -75,9 +75,9 @@ class Stage4UnitTest {
         val RGB2 = singleColor(img2, 80, 90)
         val message2 = "val0 ${RGB0} val2 ${RGB2}"
         if (RGB0 != null) {
-            assertTrue(message2,Math.abs(129-RGB2.first) <= marginError)
-            assertTrue(message2,Math.abs(129-RGB2.second) <= marginError)
-            assertTrue(message2,Math.abs(129-RGB2.third) <= marginError)
+            assertTrue(message2,Math.abs(148-RGB2.first) <= marginError)
+            assertTrue(message2,Math.abs(176-RGB2.second) <= marginError)
+            assertTrue(message2,Math.abs(203-RGB2.third) <= marginError)
         }
     }
 
@@ -102,8 +102,8 @@ class Stage4UnitTest {
         val RGB2 = singleColor(img2, 80, 90)
         val message2 = "val0 ${RGB0} val2 ${RGB2}"
         if (RGB0 != null) {
-            assertTrue(message2,Math.abs(151-RGB2.first) <= marginError)
-            assertTrue(message2,Math.abs(211-RGB2.second) <= marginError)
+            assertTrue(message2,Math.abs(154-RGB2.first) <= marginError)
+            assertTrue(message2,Math.abs(222-RGB2.second) <= marginError)
             assertTrue(message2,Math.abs(255-RGB2.third) <= marginError)
         }
     }
